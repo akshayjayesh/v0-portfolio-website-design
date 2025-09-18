@@ -446,7 +446,7 @@ export default function Portfolio() {
     },
     {
       name: "Full Stack Development",
-      icon: "🌐",
+      icon: "��",
       description: "End-to-end web solutions",
       details: {
         currentFocus: "MERN stack proficiency, deployment strategies",
@@ -1160,8 +1160,11 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-slate-800/30 relative">
+      {/* Showcase Accordion Section */}
+  <LandingAccordionItem />
+
+  {/* Contact Section */}
+  <section className="py-20 bg-slate-800/30 relative">
         <div className="absolute inset-0 bg-[url('/contact-background.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
