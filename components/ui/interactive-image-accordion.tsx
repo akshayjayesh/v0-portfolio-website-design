@@ -8,31 +8,37 @@ const accordionItems = [
     id: 1,
     title: "Portrait 1",
     imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Feb82c04ae87d4c23abb3332c2fdca3b0?format=webp&width=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F8f583b87e0a540378df1b2421a0dae56?format=webp&width=800",
   },
   {
     id: 2,
     title: "Portrait 2",
     imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca006f122984bb5aff5ce972c736076?format=webp&width=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F8bb15f2fc07940bf87c478e34f4231cd?format=webp&width=800",
   },
   {
     id: 3,
     title: "Portrait 3",
     imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F081594b53d714996ac7138bf8e4f4eda?format=webp&width=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F04269a5f1dab4f1a8fefbc5c0f1a888d?format=webp&width=800",
   },
   {
     id: 4,
     title: "Portrait 4",
     imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F94640e831dfa4db7abf0e45770057c11?format=webp&width=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F61d0aa4d891a4163af149106019c2b15?format=webp&width=800",
   },
   {
     id: 5,
     title: "Portrait 5",
     imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F2247f0e3309e4e5e9e1d30dae83e763d?format=webp&width=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F9e946894d7dd4843817ffdd28f7a6454?format=webp&width=800",
+  },
+  {
+    id: 6,
+    title: "Portrait 6",
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F5f21d1f6672e4a2ca4f34f8c1efb4f55?format=webp&width=800",
   },
 ]
 
