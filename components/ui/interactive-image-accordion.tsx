@@ -80,7 +80,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
         }}
       />
 
-      <div className="absolute inset-0 bg-black bg-opacity-40" />
+      <div className="absolute inset-0 bg-black bg-opacity-20" />
 
       <motion.span
         className="absolute text-white text-lg font-semibold whitespace-nowrap"
@@ -96,7 +96,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
 }
 
 export const LandingAccordionItem: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(4)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
 
   const handleItemHover = (index: number) => {
     setActiveIndex(index)
