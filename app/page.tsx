@@ -41,6 +41,7 @@ import {
 } from "lucide-react"
 
 import { NavBar } from "@/components/ui/navbar"
+import { Hero } from "@/components/ui/hero"
 
 const FloatingParticles = () => {
   return (
