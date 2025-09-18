@@ -1417,10 +1417,11 @@ export default function Portfolio() {
       <Dialog open={!!selectedModal} onOpenChange={() => setSelectedModal(null)}>
         <DialogContent className="bg-slate-800 border-slate-700 text-slate-100 max-w-2xl max-h-[80vh] overflow-y-auto">
           <motion.div
+            layoutId={selectedModal?.type === 'skill' ? selectedModal.layoutId : undefined}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30, duration: 0.4 }}
           >
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent flex items-center">
