@@ -92,7 +92,16 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
         }}
       />
 
-      <div className="absolute inset-0 bg-black bg-opacity-20" />
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundColor: 'rgba(0,0,0,0.55)',
+          backgroundImage: item.overlayUrl ? `url(${item.overlayUrl})` : undefined,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+        }}
+      />
 
       <motion.span
         className="absolute text-white text-lg font-semibold whitespace-nowrap"
