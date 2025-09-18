@@ -1198,7 +1198,7 @@ export default function Portfolio() {
                   </motion.div>
                 </div>
 
-                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:border-blue-400/50 h-full group-hover:scale-105">
+                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:border-blue-400/50 h-full group-hover:scale-105 transform hover:-translate-y-1">
                   <CardContent className="p-6 text-center">
                     <div className="text-4xl mb-4">{skill.icon}</div>
                     <h3 className="text-lg font-semibold text-slate-200 mb-3">{skill.name}</h3>
