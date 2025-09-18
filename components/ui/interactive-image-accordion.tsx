@@ -121,6 +121,7 @@ export const LandingAccordionItem: React.FC = () => {
                   item={item}
                   isActive={index === activeIndex}
                   onMouseEnter={() => handleItemHover(index)}
+                  onClick={() => handleItemHover(index)}
                 />
               ))}
             </div>
