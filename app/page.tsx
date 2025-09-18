@@ -547,6 +547,8 @@ export default function Portfolio() {
     { name: 'Skills', url: '#skills', icon: Code },
     { name: 'Projects', url: '#projects', icon: Briefcase },
     { name: 'Contact', url: '#contact', icon: Mail },
+    { name: 'GitHub', url: 'https://github.com/akshay-jayesh', icon: Github },
+    { name: 'LinkedIn', url: 'https://linkedin.com/in/akshay-jayesh', icon: Linkedin },
   ]
 
   return (
