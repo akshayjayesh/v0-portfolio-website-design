@@ -36,6 +36,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
       titleClassName,
       subtitleClassName,
       actionsClassName,
+      children,
       ...props
     },
     ref,
