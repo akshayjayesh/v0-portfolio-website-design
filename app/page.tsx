@@ -942,7 +942,7 @@ export default function Portfolio() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
               Technical Skills
             </h2>
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto">Hover over any skill to see detailed information</p>
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto">Click any skill to see detailed information</p>
           </motion.div>
 
           {Object.entries(skills).map(([category, skillList]) => (
