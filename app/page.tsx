@@ -959,7 +959,7 @@ export default function Portfolio() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="group cursor-pointer relative"
                   >
-                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[200] flex items-center justify-center p-4">
+                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 ease-out z-[200] flex items-center justify-center p-4 pointer-events-none">
                       <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
@@ -1163,7 +1163,7 @@ export default function Portfolio() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="cursor-pointer group relative"
               >
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[200] flex items-center justify-center p-4">
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 ease-out z-[200] flex items-center justify-center p-4 pointer-events-none">
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
