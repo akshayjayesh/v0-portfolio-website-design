@@ -42,7 +42,7 @@ import {
 
 import { NavBar } from "@/components/ui/navbar"
 import { Hero } from "@/components/ui/hero"
-import LandingAccordionItem from "@/components/ui/landing-accordion"
+import LandingAccordionItem from "@/components/ui/interactive-image-accordion"
 
 const FloatingParticles = () => {
   return (
