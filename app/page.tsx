@@ -537,6 +537,14 @@ export default function Portfolio() {
     alert("Message sent successfully!")
   }
 
+  const navItems = [
+    { name: 'About', url: '#about', icon: User },
+    { name: 'Experience', url: '#experience', icon: Calendar },
+    { name: 'Skills', url: '#skills', icon: Code },
+    { name: 'Projects', url: '#projects', icon: Briefcase },
+    { name: 'Contact', url: '#contact', icon: Mail },
+  ]
+
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100">
       {/* Navigation */}
