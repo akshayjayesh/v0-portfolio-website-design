@@ -651,96 +651,35 @@ export default function Portfolio() {
 
       <NavBar items={navItems} className="" />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div className="absolute inset-0 bg-[url('/hero-background-pattern.jpg')] bg-cover bg-center opacity-10"></div>
-        </div>
-
-        <motion.div style={{ y }} className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-emerald-900/20" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mt-[90px]">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
-          >
-            <img
-              src="/My_img2.jpg"
-              alt="Akshay Jayesh - Professional headshot"
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 border-4 border-blue-400/30 shadow-lg shadow-blue-400/20"
-            />
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent"
-          >
+      <Hero
+        title={
+          <>
             Akshay Jayesh
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-slate-300 mb-4"
-          >
-            <TypingAnimation texts={["Java Full Stack Developer", "AI & ML Enthusiast", "Problem Solver"]} />
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-slate-400 mb-6 font-medium"
-          >
-            Building scalable solutions with passion and precision
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-          >
-            Aspiring Java Developer with expertise in Spring Boot, React, and modern web technologies. Passionate about
-            creating meaningful, user-friendly applications that solve real-world problems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3">
-              <Download className="w-5 h-5 mr-2" />
-              View Resume
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white px-8 py-3 bg-transparent"
-              onClick={() => scrollToSection("#contact")}
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Contact Me
-            </Button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
-            className="mt-16"
-          >
-            <ChevronDown className="w-8 h-8 mx-auto text-slate-400 animate-bounce" />
-          </motion.div>
+          </>
+        }
+        subtitle={
+          <>
+            <div className="text-xl md:text-2xl text-slate-300 mb-4">
+              <TypingAnimation texts={["Java Full Stack Developer", "AI & ML Enthusiast", "Problem Solver"]} />
+            </div>
+            <p className="text-lg md:text-xl text-slate-400 mb-6 font-medium">Building scalable solutions with passion and precision</p>
+            <p className="text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">Aspiring Java Developer with expertise in Spring Boot, React, and modern web technologies. Passionate about creating meaningful, user-friendly applications that solve real-world problems.</p>
+          </>
+        }
+        actions={[
+          { label: "View Resume", href: "/resume.pdf", variant: "default" },
+          { label: "Contact Me", href: "#contact", variant: "outline" },
+        ]}
+        className="mt-[90px]"
+      >
+        <div className="mb-8">
+          <img
+            src="/My_img2.jpg"
+            alt="Akshay Jayesh - Professional headshot"
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 border-4 border-blue-400/30 shadow-lg shadow-blue-400/20"
+          />
         </div>
-      </section>
+      </Hero>
 
       {/* Stats Section */}
       <section className="py-20 bg-slate-800/30">
