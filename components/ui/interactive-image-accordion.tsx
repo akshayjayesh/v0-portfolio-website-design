@@ -55,6 +55,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
       className={`relative h-[450px] rounded-2xl overflow-hidden cursor-pointer`}
       onMouseEnter={onMouseEnter}
       onFocus={onMouseEnter}
+      onClick={onClick}
       role="button"
       tabIndex={0}
       aria-label={item.title}
