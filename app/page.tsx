@@ -40,6 +40,8 @@ import {
   TrendingUp,
 } from "lucide-react"
 
+import { NavBar } from "@/components/ui/navbar"
+
 const FloatingParticles = () => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
