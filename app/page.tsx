@@ -631,19 +631,19 @@ export default function Portfolio() {
                       href="https://linkedin.com/in/akshay-jayesh"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-slate-400 hover:text-blue-400 transition-colors duration-300"
+                      aria-label="LinkedIn"
+                      className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
                     >
-                      <Linkedin className="w-4 h-4 mr-2" />
-                      LinkedIn
+                      <Linkedin className="w-5 h-5" />
                     </a>
                     <a
                       href="https://github.com/akshay-jayesh"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-slate-400 hover:text-slate-200 transition-colors duration-300"
+                      aria-label="GitHub"
+                      className="text-slate-400 hover:text-slate-200 transition-colors duration-300"
                     >
-                      <Github className="w-4 h-4 mr-2" />
-                      GitHub
+                      <Github className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
