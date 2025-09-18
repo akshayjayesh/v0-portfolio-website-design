@@ -960,75 +960,7 @@ export default function Portfolio() {
                     className="group cursor-pointer relative"
                     onClick={() => setSelectedModal({ type: 'skill', data: skill, layoutId: `skill-${category}-${skill.name}-${index}` })}
                   >
-                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 ease-out z-[200] flex items-center justify-center p-4 pointer-events-none">
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                        className="bg-slate-900/95 backdrop-blur-md border border-slate-600/50 rounded-2xl p-8 max-w-md w-full shadow-2xl shadow-black/50"
-                      >
-                        <div className="text-center">
-                          <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-3xl flex items-center justify-center shadow-lg">
-                            <skill.icon className="w-10 h-10 text-white" />
-                          </div>
-                          <h4 className="text-2xl font-bold text-white mb-4">{skill.name}</h4>
-                          <Badge
-                            variant="outline"
-                            className={
-                              skill.level === "Advanced"
-                                ? "bg-emerald-500/20 text-emerald-300 border-emerald-400/50 mb-6"
-                                : skill.level === "Intermediate"
-                                  ? "bg-blue-500/20 text-blue-300 border-blue-400/50 mb-6"
-                                  : "bg-slate-500/20 text-slate-300 border-slate-400/50 mb-6"
-                            }
-                          >
-                            {skill.level}
-                          </Badge>
-                          {skill.details && (
-                            <div className="text-left text-sm text-slate-300 space-y-4">
-                              <div className="bg-slate-800/50 rounded-lg p-4">
-                                <span className="text-blue-300 font-semibold">Experience:</span>
-                                <p className="text-slate-200 mt-2">{skill.details.experience}</p>
-                              </div>
-                              {skill.details.projects && (
-                                <div className="bg-slate-800/50 rounded-lg p-4">
-                                  <span className="text-blue-300 font-semibold">Projects:</span>
-                                  <ul className="list-disc list-inside mt-2 text-slate-200 space-y-1">
-                                    {skill.details.projects.map((project, i) => (
-                                      <li key={i} className="text-sm">
-                                        {project}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              )}
-                              {skill.details.frameworks && (
-                                <div className="bg-slate-800/50 rounded-lg p-4">
-                                  <span className="text-blue-300 font-semibold">Frameworks:</span>
-                                  <div className="flex flex-wrap gap-2 mt-2">
-                                    {skill.details.frameworks.map((framework, i) => (
-                                      <span
-                                        key={i}
-                                        className="bg-gradient-to-r from-blue-600/20 to-emerald-600/20 border border-blue-500/30 px-3 py-1 rounded-md text-sm text-blue-200"
-                                      >
-                                        {framework}
-                                      </span>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                              {skill.details.nextGoal && (
-                                <div className="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-4">
-                                  <span className="text-emerald-300 font-semibold">Next Goal:</span>
-                                  <p className="text-emerald-200 mt-2 text-sm">{skill.details.nextGoal}</p>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    </div>
-
+                    
                     <Card className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:border-blue-400/50 hover:shadow-xl hover:shadow-blue-400/10 h-full group-hover:scale-105 transform hover:-translate-y-1">
                       <CardContent className="p-6 text-center">
                         <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-xl flex items-center justify-center transition-transform duration-300 shadow-lg">
