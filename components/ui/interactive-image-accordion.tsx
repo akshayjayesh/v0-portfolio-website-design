@@ -9,36 +9,48 @@ const accordionItems = [
     title: "Portrait 1",
     imageUrl:
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F8f583b87e0a540378df1b2421a0dae56?format=webp&width=800",
+    overlayUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fc00e056d473f4e2bbb61c0727973a21f",
   },
   {
     id: 2,
     title: "Portrait 2",
     imageUrl:
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F8bb15f2fc07940bf87c478e34f4231cd?format=webp&width=800",
+    overlayUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F845660775c8a49198932901b5b229b7e",
   },
   {
     id: 3,
     title: "Portrait 3",
     imageUrl:
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F04269a5f1dab4f1a8fefbc5c0f1a888d?format=webp&width=800",
+    overlayUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fb4bfe2759a644f9bae2ad62489c18fed",
   },
   {
     id: 4,
     title: "Portrait 4",
     imageUrl:
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F61d0aa4d891a4163af149106019c2b15?format=webp&width=800",
+    overlayUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F4eed7cf1bfc44a29b8f62232c535d2fd",
   },
   {
     id: 5,
     title: "Portrait 5",
     imageUrl:
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F9e946894d7dd4843817ffdd28f7a6454?format=webp&width=800",
+    overlayUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fc665d96d549946a4b51a04b99593178e",
   },
   {
     id: 6,
     title: "Portrait 6",
     imageUrl:
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F5f21d1f6672e4a2ca4f34f8c1efb4f55?format=webp&width=800",
+    overlayUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F399137584f054d0095e680578d191155",
   },
 ]
 
