@@ -6,33 +6,33 @@ import { motion, AnimatePresence } from "framer-motion"
 const accordionItems = [
   {
     id: 1,
-    title: "Voice Assistant",
+    title: "Portrait 1",
     imageUrl:
-      "https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?q=80&w=1974&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fd90d07f829fe4e34bbd07139ab3c57e4?format=webp&width=800",
   },
   {
     id: 2,
-    title: "AI Image Generation",
+    title: "Portrait 2",
     imageUrl:
-      "https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Feaaf0357eb3047218082412381a30c7d?format=webp&width=800",
   },
   {
     id: 3,
-    title: "AI Chatbot + Local RAG",
+    title: "Portrait 3",
     imageUrl:
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1974&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F41a4a274ae0e42c1912737600a630fc8?format=webp&width=800",
   },
   {
     id: 4,
-    title: "AI Agent",
+    title: "Portrait 4",
     imageUrl:
-      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2090&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F6603124c13174dc991dee39a165d2f97?format=webp&width=800",
   },
   {
     id: 5,
-    title: "Visual Understanding",
+    title: "Portrait 5",
     imageUrl:
-      "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=2070&auto=format&fit=crop",
+      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F3f6ced19b2824fed9c0d8e8bcef1033c?format=webp&width=800",
   },
 ]
 
