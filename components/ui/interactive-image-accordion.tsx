@@ -46,20 +46,25 @@ type AccordionItemProps = {
 
 const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEnter }) => {
   return (
-    <div
-      className={`relative h-[450px] rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-in-out ${
-        isActive ? "w-[400px]" : "w-[60px]"
-      }`}
+    <motion.div
+      layout
+      initial={false}
+      animate={{ width: isActive ? 400 : 60 }}
+      transition={{ type: "spring", stiffness: 200, damping: 24 }}
+      className={`relative h-[450px] rounded-2xl overflow-hidden cursor-pointer`}
       onMouseEnter={onMouseEnter}
       onFocus={onMouseEnter}
       role="button"
       tabIndex={0}
       aria-label={item.title}
     >
-      <img
+      <motion.img
         src={item.imageUrl}
         alt={item.title}
         className="absolute inset-0 w-full h-full object-cover"
+        initial={{ scale: 1 }}
+        animate={{ scale: isActive ? 1.03 : 1 }}
+        transition={{ duration: 0.6 }}
         onError={(e) => {
           const target = e.currentTarget as HTMLImageElement
           target.onerror = null
@@ -69,16 +74,16 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
 
       <div className="absolute inset-0 bg-black bg-opacity-40" />
 
-      <span
-        className={`absolute text-white text-lg font-semibold whitespace-nowrap transition-all duration-300 ease-in-out ${
-          isActive
-            ? "bottom-6 left-1/2 -translate-x-1/2 rotate-0"
-            : "w-auto text-left bottom-24 left-1/2 -translate-x-1/2 rotate-90"
-        }`}
+      <motion.span
+        className="absolute text-white text-lg font-semibold whitespace-nowrap"
+        initial={false}
+        animate={isActive ? { bottom: 24, rotate: 0, x: '-50%' } : { bottom: 96, rotate: 90, x: '-50%' }}
+        transition={{ duration: 0.35 }}
+        style={{ left: "50%", transform: "translateX(-50%)" }}
       >
         {item.title}
-      </span>
-    </div>
+      </motion.span>
+    </motion.div>
   )
 }
 
