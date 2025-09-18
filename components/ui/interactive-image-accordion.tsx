@@ -42,9 +42,10 @@ type AccordionItemProps = {
   item: Item
   isActive: boolean
   onMouseEnter: () => void
+  onClick?: () => void
 }
 
-const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEnter }) => {
+const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEnter, onClick }) => {
   return (
     <motion.div
       layout
