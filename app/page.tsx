@@ -1115,7 +1115,7 @@ export default function Portfolio() {
                     <div className="text-4xl mb-4">{skill.icon}</div>
                     <h3 className="text-lg font-semibold text-slate-200 mb-3">{skill.name}</h3>
                     <p className="text-slate-300 text-sm leading-relaxed">{skill.description}</p>
-                    <div className="mt-2 text-xs text-slate-400">Hover for details</div>
+                    <div className="mt-2 text-xs text-slate-400">Click for details</div>
                   </CardContent>
                 </Card>
               </motion.div>
