@@ -42,6 +42,7 @@ import {
 
 import { NavBar } from "@/components/ui/navbar"
 import { Hero } from "@/components/ui/hero"
+import LandingAccordionItem from "@/components/ui/landing-accordion"
 
 const FloatingParticles = () => {
   return (
@@ -446,7 +447,7 @@ export default function Portfolio() {
     },
     {
       name: "Full Stack Development",
-      icon: "��",
+      icon: "🌐",
       description: "End-to-end web solutions",
       details: {
         currentFocus: "MERN stack proficiency, deployment strategies",
