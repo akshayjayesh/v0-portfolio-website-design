@@ -480,6 +480,15 @@ export default function Portfolio() {
 
   const certifications = [
     {
+      name: "Full Stack Web Development",
+      issuer: "Besant Technologies (Bangalore) — 2025",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F3d6362bb7c1f482286b747c7103ff5ed?format=webp&width=1200",
+      details: {
+        priority: true,
+        notes: "Full Stack Web Development - Besant Technologies, Bangalore (2025)",
+      },
+    },
+    {
       name: "Cyber Security and Ethical Hacking",
       issuer: "Rinex & E-cell IIT Kharagpur",
       imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
