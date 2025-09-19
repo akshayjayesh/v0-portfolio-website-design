@@ -1155,9 +1155,6 @@ export default function Portfolio() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
               Certifications
             </h2>
-            <div className="mt-4">
-              <Button onClick={() => setShowCertGallery(true)} variant="outline">View more certificates</Button>
-            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -1188,6 +1185,11 @@ export default function Portfolio() {
               </motion.div>
             ))}
           </div>
+
+          <div className="mt-8 text-center">
+            <Button onClick={() => setShowCertGallery(true)} variant="outline">View more certificates</Button>
+          </div>
+
         </div>
       </section>
 
