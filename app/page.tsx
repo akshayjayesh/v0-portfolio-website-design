@@ -325,6 +325,7 @@ export default function Portfolio() {
       tech: ["Spring Boot", "Angular", "MySQL", "Hibernate"],
       features: ["Role-based access", "Responsive UI", "RESTful APIs"],
       image: "/Employee.png",
+      repoUrl: "https://github.com/akshayjayesh/EmployeeManagement",
       details: {
         developmentTime: "3 weeks",
         teamSize: "Individual project",
@@ -344,6 +345,7 @@ export default function Portfolio() {
       tech: ["Node.js", "React.js", "Firebase", "JWT"],
       features: ["Real-time ordering", "Admin dashboard", "Push notifications"],
       image: "/Food_App.png",
+      repoUrl: "https://github.com/akshayjayesh/Food_delivary_app",
       details: {
         developmentTime: "4 weeks",
         teamSize: "2 developers",
@@ -367,6 +369,7 @@ export default function Portfolio() {
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       features: ["Product listing", "Shopping cart", "Checkout functionality"],
       image: "/Ecommerce.png",
+      repoUrl: "https://github.com/akshayjayesh/e_commerce",
       details: {
         developmentTime: "2 weeks",
         teamSize: "Individual project",
