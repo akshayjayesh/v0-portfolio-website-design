@@ -1198,7 +1198,7 @@ export default function Portfolio() {
   <LandingAccordionItem />
 
   {/* Contact Section */}
-  <section className="py-20 bg-slate-800/30 relative">
+  <section id="contact" className="py-20 bg-slate-800/30 relative">
         <div className="absolute inset-0 bg-[url('/contact-background.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
