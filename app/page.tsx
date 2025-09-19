@@ -478,6 +478,7 @@ export default function Portfolio() {
     {
       name: "Cyber Security and Ethical Hacking",
       issuer: "Rinex & E-cell IIT Kharagpur",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
       details: {
         duration: "40 hours",
         keySkills: "Network security, penetration testing basics",
@@ -488,6 +489,7 @@ export default function Portfolio() {
     {
       name: "Introduction to AI",
       issuer: "IBM via Coursera (2023)",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
       details: {
         platform: "Coursera",
         completion: "2023",
@@ -499,6 +501,7 @@ export default function Portfolio() {
     {
       name: "UI/UX Design using Figma",
       issuer: "Udemy",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
       details: {
         skills: "User interface design, prototyping",
         tools: "Figma, design systems",
@@ -508,6 +511,7 @@ export default function Portfolio() {
     {
       name: "Git & GitHub",
       issuer: "Geekster (2023)",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
       details: {
         skills: "Version control, collaboration",
         application: "All development projects",
