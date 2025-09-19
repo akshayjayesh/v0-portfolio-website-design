@@ -39,6 +39,11 @@ export function NavBar({ items, className }: NavBarProps) {
       )}
     >
       <div className="pointer-events-auto w-max mx-auto flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+        {/* AJ logo */}
+        <div className="flex items-center gap-2 px-2">
+          <div className="rounded-full w-8 h-8 bg-gradient-to-tr from-blue-400 to-emerald-400 flex items-center justify-center font-bold text-white">AJ</div>
+        </div>
+
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
