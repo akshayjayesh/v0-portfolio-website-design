@@ -1049,13 +1049,26 @@ export default function Portfolio() {
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Live Demo
                       </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent"
-                      >
-                        <Github className="w-4 h-4" />
-                      </Button>
+                      {project.repoUrl ? (
+                        <a href={project.repoUrl} target="_blank" rel="noreferrer" className="inline-block w-full">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent w-full"
+                          >
+                            <Github className="w-4 h-4" />
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent w-full"
+                          disabled
+                        >
+                          <Github className="w-4 h-4" />
+                        </Button>
+                      )}
                     </div>
 
                     <div className="mt-3 text-xs text-slate-400 text-center">Click for detailed information</div>
