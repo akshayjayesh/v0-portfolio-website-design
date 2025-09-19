@@ -603,7 +603,7 @@ export default function Portfolio() {
                   {socialOpen && (
                     <div className="absolute right-0 mt-2 w-40 bg-slate-800 border border-slate-700 rounded-md shadow-lg py-2 z-50">
                       <a href="https://github.com/akshayjayesh" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
-                      <a href="https://linkedin.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                      <a href="https://www.linkedin.com/in/akshay-jayesh/" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
                       <a href="https://instagram.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
                     </div>
                   )}
@@ -652,7 +652,7 @@ export default function Portfolio() {
                     {mobSocialOpen && (
                       <div className="mt-2 space-y-2">
                         <a href="https://github.com/akshayjayesh" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
-                        <a href="https://linkedin.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/akshay-jayesh/" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
                         <a href="https://instagram.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
                       </div>
                     )}
@@ -685,7 +685,7 @@ export default function Portfolio() {
             {mobSocialOpen && (
               <div className="absolute bottom-12 right-0 bg-slate-800 border border-slate-700 rounded-md py-2 w-40">
                 <a href="https://github.com/akshayjayesh" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
-                <a href="https://linkedin.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/akshay-jayesh/" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
                 <a href="https://instagram.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
               </div>
             )}
