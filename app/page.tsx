@@ -193,6 +193,8 @@ const DetailModal = ({
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [selectedModal, setSelectedModal] = useState<{ type: string; data: any } | null>(null)
+  const [socialOpen, setSocialOpen] = useState(false)
+  const [mobSocialOpen, setMobSocialOpen] = useState(false)
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { scrollYProgress } = useScroll()
