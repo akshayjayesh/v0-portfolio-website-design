@@ -504,7 +504,7 @@ export default function Portfolio() {
     {
       name: "UI/UX Design using Figma",
       issuer: "Udemy",
-      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F594242d2fa4041a898cab22ad82aad29?format=webp&width=1200",
       details: {
         skills: "User interface design, prototyping",
         tools: "Figma, design systems",
