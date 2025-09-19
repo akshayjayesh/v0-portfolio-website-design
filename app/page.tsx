@@ -492,7 +492,7 @@ export default function Portfolio() {
     {
       name: "Introduction to AI",
       issuer: "IBM via Coursera (2023)",
-      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F41c96d6ce8464e77ac2237623d2d6e7e?format=webp&width=1200",
       details: {
         platform: "Coursera",
         completion: "2023",
