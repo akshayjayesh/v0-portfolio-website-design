@@ -1175,11 +1175,14 @@ export default function Portfolio() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
               Certifications
             </h2>
+            <div className="mt-4">
+              <Button onClick={() => setShowCertGallery(true)} variant="outline">View more certificates</Button>
+            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6">
