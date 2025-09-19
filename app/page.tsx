@@ -1601,6 +1601,33 @@ export default function Portfolio() {
           </motion.div>
         </DialogContent>
       </Dialog>
+
+    {showCertGallery && (
+      <AnimatePresence>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black/60" onClick={() => setShowCertGallery(false)} />
+          <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="relative w-full max-w-4xl p-6">
+            <Card className="bg-slate-800/95 border-slate-700">
+              <CardContent>
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-2xl font-bold text-slate-200">All Certificates</h3>
+                  <Button variant="ghost" size="sm" onClick={() => setShowCertGallery(false)}><X className="w-4 h-4" /></Button>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {certifications.map((c) => (
+                    <button key={c.name} onClick={() => { setSelectedModal({ type: 'certification', data: c }); setShowCertGallery(false); }} className="bg-slate-700/20 p-2 rounded-md text-left">
+                      <img src={c.imageUrl} alt={c.name} className="w-full h-36 object-contain rounded-md" />
+                      <div className="text-slate-300 text-sm mt-2">{c.name}</div>
+                    </button>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
+    )}
+
     </div>
   )
 }
