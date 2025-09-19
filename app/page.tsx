@@ -916,7 +916,7 @@ export default function Portfolio() {
       </section>
 
       {/* Technical Skills Section */}
-      <section className="py-20 bg-slate-900/50 relative">
+      <section id="skills" className="py-20 bg-slate-900/50 relative">
         <div className="absolute inset-0 bg-[url('/skills-background.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
