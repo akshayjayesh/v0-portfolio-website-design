@@ -29,8 +29,49 @@ export function NavBar({ items, className }: NavBarProps) {
 
     handleResize()
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+
+    // Scrollspy: observe sections and update active tab
+    const sectionItems = items.filter((i) => i.url?.startsWith("#"))
+    const idToName: Record<string, string> = {}
+    sectionItems.forEach((it) => {
+      const id = it.url.replace("#", "")
+      idToName[id] = it.name
+    })
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-40% 0px -55% 0px',
+      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+    }
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      // pick the entry with highest intersectionRatio that's intersecting
+      const visible = entries.filter((e) => e.isIntersecting)
+      if (visible.length > 0) {
+        visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        const id = visible[0].target.id
+        const name = idToName[id]
+        if (name) setActiveTab(name)
+      } else {
+        // if none intersecting, try to find the one closest to top
+        entries.sort((a, b) => b.boundingClientRect.top - a.boundingClientRect.top)
+        const id = entries[0]?.target?.id
+        const name = idToName[id]
+        if (name) setActiveTab(name)
+      }
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+    Object.keys(idToName).forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      observer.disconnect()
+    }
+  }, [items])
 
   return (
     <div
