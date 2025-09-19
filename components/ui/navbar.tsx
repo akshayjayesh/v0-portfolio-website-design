@@ -96,6 +96,25 @@ export function NavBar({ items, className }: NavBarProps) {
             </Link>
           )
         })}
+
+        {/* Socials dropdown */}
+        <div className="relative">
+          <button
+            onClick={() => setSocialOpen((s) => !s)}
+            aria-label="Socials"
+            className="text-foreground/80 hover:text-primary px-3 py-2 rounded-md bg-slate-800/30"
+          >
+            Socials
+          </button>
+
+          {socialOpen && (
+            <div className="absolute right-0 mt-2 w-40 bg-background/80 border border-border rounded-md shadow-lg py-2 z-50">
+              <a href="https://github.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
+              <a href="https://linkedin.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+              <a href="https://instagram.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
