@@ -686,6 +686,7 @@ export default function Portfolio() {
         </div>
       </div>
 
+      <div id="home"></div>
       <Hero
         title={
           <>
