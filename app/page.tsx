@@ -548,9 +548,18 @@ export default function Portfolio() {
     { name: 'Skills', url: '#skills', icon: Code },
     { name: 'Projects', url: '#projects', icon: Briefcase },
     { name: 'Contact', url: '#contact', icon: Mail },
-    { name: 'GitHub', url: 'https://github.com/akshay-jayesh', icon: Github },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/akshay-jayesh', icon: Linkedin },
   ]
+
+  // Smooth scroll to section by id (offset for fixed header)
+  const scrollToSection = (e: React.MouseEvent | undefined, id: string) => {
+    if (e) e.preventDefault()
+    const el = document.getElementById(id)
+    if (!el) return
+    const headerOffset = 88 // adjust if header height changes
+    const elementPosition = el.getBoundingClientRect().top + window.scrollY
+    const offsetPosition = elementPosition - headerOffset
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+  }
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100">
