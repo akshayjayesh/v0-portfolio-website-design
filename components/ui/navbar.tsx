@@ -43,11 +43,22 @@ export function NavBar({ items, className }: NavBarProps) {
           const Icon = item.icon
           const isActive = activeTab === item.name
 
+          const handleClick = (e: React.MouseEvent) => {
+            if (item.url?.startsWith("#")) {
+              e.preventDefault()
+              const id = item.url.replace("#", "")
+              const el = document.getElementById(id)
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+            }
+            setActiveTab(item.name)
+          }
+
           return (
             <Link
               key={item.name}
               href={item.url}
-              onClick={() => setActiveTab(item.name)}
+              onClick={handleClick}
+              aria-label={item.name}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
                 "text-foreground/80 hover:text-primary",
