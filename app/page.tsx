@@ -574,29 +574,33 @@ export default function Portfolio() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
+                  onClick={(e) => scrollToSection(e, item.toLowerCase())}
                   className="text-slate-300 hover:text-blue-400 transition-colors duration-300 font-medium"
                 >
                   {item}
                 </a>
               ))}
 
-              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-slate-700">
-                <a
-                  href="https://linkedin.com/in/akshay-jayesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://github.com/akshay-jayesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-slate-200 transition-colors duration-300"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
+              {/* Socials dropdown (desktop) and AJ logo */}
+              <div className="relative flex items-center space-x-4 ml-6 pl-6 border-l border-slate-700">
+                <div className="rounded-full w-10 h-10 bg-gradient-to-tr from-blue-400 to-emerald-400 flex items-center justify-center font-bold text-white">AJ</div>
+                <div className="relative">
+                  <button
+                    onClick={() => setSocialOpen(!socialOpen)}
+                    aria-expanded={socialOpen}
+                    className="text-slate-300 hover:text-white px-3 py-2 rounded-md bg-slate-800/40"
+                  >
+                    Socials
+                  </button>
+
+                  {socialOpen && (
+                    <div className="absolute right-0 mt-2 w-40 bg-slate-800 border border-slate-700 rounded-md shadow-lg py-2 z-50">
+                      <a href="https://github.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
+                      <a href="https://linkedin.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                      <a href="https://instagram.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
