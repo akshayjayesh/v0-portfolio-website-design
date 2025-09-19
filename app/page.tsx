@@ -624,35 +624,31 @@ export default function Portfolio() {
                 className="md:hidden border-t border-slate-800 py-4"
               >
                 <div className="flex flex-col space-y-4">
-                  {["About", "Experience", "Skills", "Projects", "Contact"].map((item) => (
+                  {['About', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
                     <a
                       key={item}
                       href={`#${item.toLowerCase()}`}
                       className="text-slate-300 hover:text-blue-400 transition-colors duration-300"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => { scrollToSection(e, item.toLowerCase()); setIsMenuOpen(false) }}
                     >
                       {item}
                     </a>
                   ))}
-                  <div className="flex items-center space-x-4 pt-4 border-t border-slate-800">
-                    <a
-                      href="https://linkedin.com/in/akshay-jayesh"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="LinkedIn"
-                      className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
+
+                  <div className="pt-4 border-t border-slate-800">
+                    <button
+                      onClick={() => setMobSocialOpen(!mobSocialOpen)}
+                      className="w-full text-left px-2 py-2 text-slate-300 hover:bg-slate-800/40 rounded-md"
                     >
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="https://github.com/akshay-jayesh"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub"
-                      className="text-slate-400 hover:text-slate-200 transition-colors duration-300"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
+                      Socials
+                    </button>
+                    {mobSocialOpen && (
+                      <div className="mt-2 space-y-2">
+                        <a href="https://github.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
+                        <a href="https://linkedin.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                        <a href="https://instagram.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
