@@ -522,14 +522,6 @@ export default function Portfolio() {
     { name: "Contact", href: "#contact" },
   ]
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" })
-    }
-    setIsMenuOpen(false)
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
