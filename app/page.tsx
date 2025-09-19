@@ -720,7 +720,7 @@ export default function Portfolio() {
           </>
         }
         actions={[
-          { label: "View Resume", href: "/resume.pdf", variant: "default" },
+          { label: "View Resume", href: "/resume", variant: "default" },
           { label: "Contact Me", href: "#contact", variant: "outline" },
         ]}
         className="mt-[90px]"
