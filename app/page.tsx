@@ -558,6 +558,7 @@ export default function Portfolio() {
     { name: 'Experience', url: '#experience', icon: Calendar },
     { name: 'Skills', url: '#skills', icon: Code },
     { name: 'Projects', url: '#projects', icon: Briefcase },
+    { name: 'Freelance', url: '#freelance', icon: Briefcase },
     { name: 'Contact', url: '#contact', icon: Mail },
   ]
 
@@ -587,7 +588,7 @@ export default function Portfolio() {
             </motion.div>
 
             <div className="hidden md:flex items-center space-x-8">
-              {["About", "Experience", "Skills", "Projects", "Contact"].map((item) => (
+              {["About", "Experience", "Skills", "Projects", "Freelance", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -1230,6 +1231,85 @@ export default function Portfolio() {
 
       {/* Showcase Accordion Section */}
   <LandingAccordionItem />
+
+  {/* Freelancing Section */}
+  <section id="freelance" className="py-20 bg-slate-800/30">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+          Freelancing Services
+        </h2>
+        <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+          I provide professional website building services — available part-time or for KozkerTech. I build responsive,
+          accessible, and performant websites using modern stacks (React, Next.js, Tailwind, Spring Boot for backends).
+          Interested clients can inquire via mobile or email below.
+        </p>
+      </motion.div>
+
+      <div className="max-w-4xl mx-auto">
+        <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+          <CardContent className="p-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-slate-200 mb-2">Website Building (Part-time / KozkerTech)</h3>
+                <p className="text-slate-300 mb-4 leading-relaxed">Services include: Responsive website development, CMS integration, performance optimization, SEO basics, and deployment.</p>
+                <div className="flex flex-wrap gap-2">
+                  {['Responsive Design', 'Static & Dynamic Sites', 'CMS Integration', 'Performance Optimization', 'Deployment'].map((s) => (
+                    <Badge key={s} className="bg-slate-700 text-slate-200 hover:bg-slate-600">{s}</Badge>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-full md:w-80">
+                <div className="bg-slate-800/40 rounded-lg p-4">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-3">
+                      <Mail className="w-6 h-6 text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="text-slate-300 font-medium">Email</p>
+                      <a href="mailto:akshayjayeshjp@gmail.com" className="text-slate-400 hover:text-blue-400">akshayjayeshjp@gmail.com</a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mr-3">
+                      <Phone className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-slate-300 font-medium">Mobile</p>
+                      <a href="tel:+918078309818" className="text-slate-400 hover:text-emerald-400">+91 8078309818</a>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex flex-col space-y-3">
+                    <Button size="sm" className="w-full bg-blue-500 hover:bg-blue-600 text-white" onClick={(e) => scrollToSection(undefined,'contact')}>
+                      Enquire / Send Message
+                    </Button>
+                    <a href="mailto:akshayjayeshjp@gmail.com" className="w-full inline-block">
+                      <Button size="sm" variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent">
+                        <Mail className="w-4 h-4 mr-2" /> Email Me
+                      </Button>
+                    </a>
+                    <a href="tel:+918078309818" className="w-full inline-block">
+                      <Button size="sm" variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent">
+                        <Phone className="w-4 h-4 mr-2" /> Call Me
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
 
   {/* Contact Section */}
   <section id="contact" className="py-20 bg-slate-800/30 relative">
