@@ -558,7 +558,7 @@ export default function Portfolio() {
     { name: 'Experience', url: '#experience', icon: Calendar },
     { name: 'Skills', url: '#skills', icon: Code },
     { name: 'Projects', url: '#projects', icon: Briefcase },
-    { name: 'Freelance', url: '#freelance', icon: Briefcase },
+    { name: 'Service', url: '#freelance', icon: Briefcase },
     { name: 'Contact', url: '#contact', icon: Mail },
   ]
 
@@ -588,14 +588,14 @@ export default function Portfolio() {
             </motion.div>
 
             <div className="hidden md:flex items-center space-x-8">
-              {["About", "Experience", "Skills", "Projects", "Freelance", "Contact"].map((item) => (
+              {navItems.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={(e) => scrollToSection(e, item.toLowerCase())}
+                  key={item.name}
+                  href={item.url}
+                  onClick={(e) => scrollToSection(e, item.url.replace('#',''))}
                   className="text-slate-300 hover:text-blue-400 transition-colors duration-300 font-medium"
                 >
-                  {item}
+                  {item.name}
                 </a>
               ))}
 
