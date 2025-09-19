@@ -1533,6 +1533,21 @@ export default function Portfolio() {
 
               {selectedModal?.type === "certification" && selectedModal.data.details && (
                 <div className="space-y-4">
+                  {/* Certificate preview */}
+                  {selectedModal.data.imageUrl && (
+                    <div className="bg-slate-700/20 rounded-lg p-4 flex flex-col md:flex-row items-center gap-4">
+                      <img src={selectedModal.data.imageUrl} alt={`${selectedModal.data.name} certificate`} className="w-full md:w-1/2 rounded-md shadow-md object-contain" />
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-emerald-400 mb-2">{selectedModal.data.name}</h4>
+                        <p className="text-slate-300 mb-4">Issued by: {selectedModal.data.issuer}</p>
+                        <div className="flex gap-3">
+                          <a href={selectedModal.data.imageUrl} target="_blank" rel="noreferrer" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md">View Certificate</a>
+                          <button onClick={() => window.print()} className="inline-block bg-slate-700 text-white px-4 py-2 rounded-md">Print</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {selectedModal.data.details.duration && (
                     <div className="bg-slate-700/30 rounded-lg p-4">
                       <h4 className="font-semibold text-blue-400 mb-2">Duration</h4>
