@@ -393,7 +393,7 @@ export default function Portfolio() {
   const softSkills = [
     {
       name: "Relationship Building",
-      icon: "🤝",
+      icon: "��",
       description: "Foster trust and collaboration within teams",
       details: {
         example: "Built strong working relationships with team members during Food Ordering Website project",
@@ -642,14 +642,14 @@ export default function Portfolio() {
                 className="md:hidden border-t border-slate-800 py-4"
               >
                 <div className="flex flex-col space-y-4">
-                  {['About', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
+                  {navItems.map((item) => (
                     <a
-                      key={item}
-                      href={`#${item.toLowerCase()}`}
+                      key={item.name}
+                      href={item.url}
                       className="text-slate-300 hover:text-blue-400 transition-colors duration-300"
-                      onClick={(e) => { scrollToSection(e, item.toLowerCase()); setIsMenuOpen(false) }}
+                      onClick={(e) => { scrollToSection(e, item.url.replace('#','')); setIsMenuOpen(false) }}
                     >
-                      {item}
+                      {item.name}
                     </a>
                   ))}
 
