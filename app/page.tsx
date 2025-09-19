@@ -659,6 +659,33 @@ export default function Portfolio() {
 
       <NavBar items={navItems} className="" />
 
+      {/* Mobile bottom nav (icons-only) */}
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-full max-w-md mx-auto md:hidden z-50">
+        <div className="bg-slate-900/90 border border-slate-800 rounded-full px-4 py-2 flex items-center justify-between shadow-lg">
+          <button onClick={(e) => scrollToSection(e, 'home')} className="text-slate-300 p-2">
+            <User className="w-5 h-5" />
+          </button>
+          <button onClick={(e) => scrollToSection(e, 'about')} className="text-slate-300 p-2">
+            <Briefcase className="w-5 h-5" />
+          </button>
+          <button onClick={(e) => scrollToSection(e, 'skills')} className="text-slate-300 p-2">
+            <Code className="w-5 h-5" />
+          </button>
+          <div className="relative">
+            <button onClick={() => setMobSocialOpen(!mobSocialOpen)} className="text-slate-300 p-2">
+              Socials
+            </button>
+            {mobSocialOpen && (
+              <div className="absolute bottom-12 right-0 bg-slate-800 border border-slate-700 rounded-md py-2 w-40">
+                <a href="https://github.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
+                <a href="https://linkedin.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                <a href="https://instagram.com/dummy" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
       <Hero
         title={
           <>
