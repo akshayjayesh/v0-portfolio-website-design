@@ -1,5 +1,6 @@
 "use client"
 
+"use client"
 import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
@@ -39,6 +40,10 @@ import {
   Clock,
   TrendingUp,
 } from "lucide-react"
+
+import { NavBar } from "@/components/ui/navbar"
+import { Hero } from "@/components/ui/hero"
+import LandingAccordionItem from "@/components/ui/interactive-image-accordion"
 
 const FloatingParticles = () => {
   return (
@@ -188,6 +193,9 @@ const DetailModal = ({
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [selectedModal, setSelectedModal] = useState<{ type: string; data: any } | null>(null)
+  const [socialOpen, setSocialOpen] = useState(false)
+  const [mobSocialOpen, setMobSocialOpen] = useState(false)
+  const [showCertGallery, setShowCertGallery] = useState(false)
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { scrollYProgress } = useScroll()
@@ -318,6 +326,7 @@ export default function Portfolio() {
       tech: ["Spring Boot", "Angular", "MySQL", "Hibernate"],
       features: ["Role-based access", "Responsive UI", "RESTful APIs"],
       image: "/Employee.png",
+      repoUrl: "https://github.com/akshayjayesh/EmployeeManagement",
       details: {
         developmentTime: "3 weeks",
         teamSize: "Individual project",
@@ -337,6 +346,7 @@ export default function Portfolio() {
       tech: ["Node.js", "React.js", "Firebase", "JWT"],
       features: ["Real-time ordering", "Admin dashboard", "Push notifications"],
       image: "/Food_App.png",
+      repoUrl: "https://github.com/akshayjayesh/Food_delivary_app",
       details: {
         developmentTime: "4 weeks",
         teamSize: "2 developers",
@@ -360,6 +370,7 @@ export default function Portfolio() {
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       features: ["Product listing", "Shopping cart", "Checkout functionality"],
       image: "/Ecommerce.png",
+      repoUrl: "https://github.com/akshayjayesh/e_commerce",
       details: {
         developmentTime: "2 weeks",
         teamSize: "Individual project",
@@ -382,7 +393,7 @@ export default function Portfolio() {
   const softSkills = [
     {
       name: "Relationship Building",
-      icon: "🤝",
+      icon: "��",
       description: "Foster trust and collaboration within teams",
       details: {
         example: "Built strong working relationships with team members during Food Ordering Website project",
@@ -469,8 +480,18 @@ export default function Portfolio() {
 
   const certifications = [
     {
+      name: "Full Stack Web Development",
+      issuer: "Besant Technologies (Bangalore) — 2025",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F3d6362bb7c1f482286b747c7103ff5ed?format=webp&width=1200",
+      details: {
+        priority: true,
+        notes: "Full Stack Web Development - Besant Technologies, Bangalore (2025)",
+      },
+    },
+    {
       name: "Cyber Security and Ethical Hacking",
       issuer: "Rinex & E-cell IIT Kharagpur",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1ca16ef9872d448ba3365c488ecd7103?format=webp&width=1200",
       details: {
         duration: "40 hours",
         keySkills: "Network security, penetration testing basics",
@@ -481,6 +502,7 @@ export default function Portfolio() {
     {
       name: "Introduction to AI",
       issuer: "IBM via Coursera (2023)",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F41c96d6ce8464e77ac2237623d2d6e7e?format=webp&width=1200",
       details: {
         platform: "Coursera",
         completion: "2023",
@@ -492,6 +514,7 @@ export default function Portfolio() {
     {
       name: "UI/UX Design using Figma",
       issuer: "Udemy",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F594242d2fa4041a898cab22ad82aad29?format=webp&width=1200",
       details: {
         skills: "User interface design, prototyping",
         tools: "Figma, design systems",
@@ -501,6 +524,7 @@ export default function Portfolio() {
     {
       name: "Git & GitHub",
       issuer: "Geekster (2023)",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F045ca8d2b4e04d368279f94c9571ad89?format=webp&width=1200",
       details: {
         skills: "Version control, collaboration",
         application: "All development projects",
@@ -517,14 +541,6 @@ export default function Portfolio() {
     { name: "Contact", href: "#contact" },
   ]
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" })
-    }
-    setIsMenuOpen(false)
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -537,10 +553,30 @@ export default function Portfolio() {
     alert("Message sent successfully!")
   }
 
+  const navItems = [
+    { name: 'About', url: '#about', icon: User },
+    { name: 'Experience', url: '#experience', icon: Calendar },
+    { name: 'Skills', url: '#skills', icon: Code },
+    { name: 'Projects', url: '#projects', icon: Briefcase },
+    { name: 'Service', url: '#freelance', icon: Briefcase },
+    { name: 'Contact', url: '#contact', icon: Mail },
+  ]
+
+  // Smooth scroll to section by id (offset for fixed header)
+  const scrollToSection = (e: React.MouseEvent | undefined, id: string) => {
+    if (e) e.preventDefault()
+    const el = document.getElementById(id)
+    if (!el) return
+    const headerOffset = 88 // adjust if header height changes
+    const elementPosition = el.getBoundingClientRect().top + window.scrollY
+    const offsetPosition = elementPosition - headerOffset
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+  }
+
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 z-50">
+      <nav className="hidden fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <motion.div
@@ -552,33 +588,37 @@ export default function Portfolio() {
             </motion.div>
 
             <div className="hidden md:flex items-center space-x-8">
-              {["About", "Experience", "Skills", "Projects", "Contact"].map((item) => (
+              {navItems.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                  key={item.name}
+                  href={item.url}
+                  onClick={(e) => scrollToSection(e, item.url.replace('#',''))}
                   className="text-slate-300 hover:text-blue-400 transition-colors duration-300 font-medium"
                 >
-                  {item}
+                  {item.name}
                 </a>
               ))}
 
-              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-slate-700">
-                <a
-                  href="https://linkedin.com/in/akshay-jayesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://github.com/akshay-jayesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-slate-200 transition-colors duration-300"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
+              {/* Socials dropdown (desktop) and AJ logo */}
+              <div className="relative flex items-center space-x-4 ml-6 pl-6 border-l border-slate-700">
+                <div className="rounded-full w-10 h-10 bg-gradient-to-tr from-blue-400 to-emerald-400 flex items-center justify-center font-bold text-white">AJ</div>
+                <div className="relative">
+                  <button
+                    onClick={() => setSocialOpen(!socialOpen)}
+                    aria-expanded={socialOpen}
+                    className="text-slate-300 hover:text-white px-3 py-2 rounded-md bg-slate-800/40"
+                  >
+                    Socials
+                  </button>
+
+                  {socialOpen && (
+                    <div className="absolute right-0 mt-2 w-40 bg-slate-800 border border-slate-700 rounded-md shadow-lg py-2 z-50">
+                      <a href="https://github.com/akshayjayesh" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
+                      <a href="https://www.linkedin.com/in/akshay-jayesh/" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                      <a href="https://www.instagram.com/akshay_jayesh._aj/?next=%2F" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -602,35 +642,31 @@ export default function Portfolio() {
                 className="md:hidden border-t border-slate-800 py-4"
               >
                 <div className="flex flex-col space-y-4">
-                  {["About", "Experience", "Skills", "Projects", "Contact"].map((item) => (
+                  {navItems.map((item) => (
                     <a
-                      key={item}
-                      href={`#${item.toLowerCase()}`}
+                      key={item.name}
+                      href={item.url}
                       className="text-slate-300 hover:text-blue-400 transition-colors duration-300"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => { scrollToSection(e, item.url.replace('#','')); setIsMenuOpen(false) }}
                     >
-                      {item}
+                      {item.name}
                     </a>
                   ))}
-                  <div className="flex items-center space-x-4 pt-4 border-t border-slate-800">
-                    <a
-                      href="https://linkedin.com/in/akshay-jayesh"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-slate-400 hover:text-blue-400 transition-colors duration-300"
+
+                  <div className="pt-4 border-t border-slate-800">
+                    <button
+                      onClick={() => setMobSocialOpen(!mobSocialOpen)}
+                      className="w-full text-left px-2 py-2 text-slate-300 hover:bg-slate-800/40 rounded-md"
                     >
-                      <Linkedin className="w-4 h-4 mr-2" />
-                      LinkedIn
-                    </a>
-                    <a
-                      href="https://github.com/akshay-jayesh"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-slate-400 hover:text-slate-200 transition-colors duration-300"
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      GitHub
-                    </a>
+                      Socials
+                    </button>
+                    {mobSocialOpen && (
+                      <div className="mt-2 space-y-2">
+                        <a href="https://github.com/akshayjayesh" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">GitHub</a>
+                        <a href="https://www.linkedin.com/in/akshay-jayesh/" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">LinkedIn</a>
+                        <a href="https://www.instagram.com/akshay_jayesh._aj/?next=%2F" target="_blank" rel="noreferrer" className="block px-4 py-2 text-sm hover:bg-slate-700">Instagram</a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -639,96 +675,39 @@ export default function Portfolio() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div className="absolute inset-0 bg-[url('/hero-background-pattern.jpg')] bg-cover bg-center opacity-10"></div>
-        </div>
+      <NavBar items={navItems} className="" />
 
-        <motion.div style={{ y }} className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-emerald-900/20" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mt-[90px]">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
-          >
-            <img
-              src="/My_img2.jpg"
-              alt="Akshay Jayesh - Professional headshot"
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 border-4 border-blue-400/30 shadow-lg shadow-blue-400/20"
-            />
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent"
-          >
+      <div id="home"></div>
+      <Hero
+        title={
+          <>
             Akshay Jayesh
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-slate-300 mb-4"
-          >
-            <TypingAnimation texts={["Java Full Stack Developer", "AI & ML Enthusiast", "Problem Solver"]} />
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-slate-400 mb-6 font-medium"
-          >
-            Building scalable solutions with passion and precision
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-          >
-            Aspiring Java Developer with expertise in Spring Boot, React, and modern web technologies. Passionate about
-            creating meaningful, user-friendly applications that solve real-world problems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3">
-              <Download className="w-5 h-5 mr-2" />
-              View Resume
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white px-8 py-3 bg-transparent"
-              onClick={() => scrollToSection("#contact")}
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Contact Me
-            </Button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
-            className="mt-16"
-          >
-            <ChevronDown className="w-8 h-8 mx-auto text-slate-400 animate-bounce" />
-          </motion.div>
+          </>
+        }
+        subtitle={
+          <>
+            <div className="text-xl md:text-2xl text-slate-300 mb-4">
+              <TypingAnimation texts={["Java Full Stack Developer", "AI & ML Enthusiast", "Problem Solver"]} />
+            </div>
+            <p className="text-lg md:text-xl text-slate-400 mb-6 font-medium">Building scalable solutions with passion and precision</p>
+            <p className="text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">Aspiring Java Developer with expertise in Spring Boot, React, and modern web technologies. Passionate about creating meaningful, user-friendly applications that solve real-world problems.</p>
+          </>
+        }
+        actions={[
+          { label: "View Resume", href: "/resume", variant: "default" },
+          { label: "Contact Me", href: "#contact", variant: "outline" },
+        ]}
+        className="mt-[90px]"
+      >
+        <div className="mb-8">
+          <img
+            src="/My_img2.jpg"
+            alt="Akshay Jayesh - Professional headshot"
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 border-4 border-blue-400/30 shadow-lg shadow-blue-400/20"
+          />
         </div>
-      </section>
+      </Hero>
 
       {/* Stats Section */}
       <section className="py-20 bg-slate-800/30">
@@ -760,7 +739,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-slate-800/30 relative">
+      <section id="about" className="py-20 bg-slate-800/30 relative">
         <div className="absolute inset-0 bg-[url('/about-illustration.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -930,7 +909,7 @@ export default function Portfolio() {
       </section>
 
       {/* Technical Skills Section */}
-      <section className="py-20 bg-slate-900/50 relative">
+      <section id="skills" className="py-20 bg-slate-900/50 relative">
         <div className="absolute inset-0 bg-[url('/skills-background.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -942,7 +921,7 @@ export default function Portfolio() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
               Technical Skills
             </h2>
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto">Hover over any skill to see detailed information</p>
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto">Click any skill to see detailed information</p>
           </motion.div>
 
           {Object.entries(skills).map(([category, skillList]) => (
@@ -958,77 +937,10 @@ export default function Portfolio() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="group cursor-pointer relative"
+                    onClick={() => setSelectedModal({ type: 'skill', data: skill, layoutId: `skill-${category}-${skill.name}-${index}` })}
                   >
-                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[200] flex items-center justify-center p-4">
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                        className="bg-slate-900/95 backdrop-blur-md border border-slate-600/50 rounded-2xl p-8 max-w-md w-full shadow-2xl shadow-black/50"
-                      >
-                        <div className="text-center">
-                          <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-3xl flex items-center justify-center shadow-lg">
-                            <skill.icon className="w-10 h-10 text-white" />
-                          </div>
-                          <h4 className="text-2xl font-bold text-white mb-4">{skill.name}</h4>
-                          <Badge
-                            variant="outline"
-                            className={
-                              skill.level === "Advanced"
-                                ? "bg-emerald-500/20 text-emerald-300 border-emerald-400/50 mb-6"
-                                : skill.level === "Intermediate"
-                                  ? "bg-blue-500/20 text-blue-300 border-blue-400/50 mb-6"
-                                  : "bg-slate-500/20 text-slate-300 border-slate-400/50 mb-6"
-                            }
-                          >
-                            {skill.level}
-                          </Badge>
-                          {skill.details && (
-                            <div className="text-left text-sm text-slate-300 space-y-4">
-                              <div className="bg-slate-800/50 rounded-lg p-4">
-                                <span className="text-blue-300 font-semibold">Experience:</span>
-                                <p className="text-slate-200 mt-2">{skill.details.experience}</p>
-                              </div>
-                              {skill.details.projects && (
-                                <div className="bg-slate-800/50 rounded-lg p-4">
-                                  <span className="text-blue-300 font-semibold">Projects:</span>
-                                  <ul className="list-disc list-inside mt-2 text-slate-200 space-y-1">
-                                    {skill.details.projects.map((project, i) => (
-                                      <li key={i} className="text-sm">
-                                        {project}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              )}
-                              {skill.details.frameworks && (
-                                <div className="bg-slate-800/50 rounded-lg p-4">
-                                  <span className="text-blue-300 font-semibold">Frameworks:</span>
-                                  <div className="flex flex-wrap gap-2 mt-2">
-                                    {skill.details.frameworks.map((framework, i) => (
-                                      <span
-                                        key={i}
-                                        className="bg-gradient-to-r from-blue-600/20 to-emerald-600/20 border border-blue-500/30 px-3 py-1 rounded-md text-sm text-blue-200"
-                                      >
-                                        {framework}
-                                      </span>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                              {skill.details.nextGoal && (
-                                <div className="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-4">
-                                  <span className="text-emerald-300 font-semibold">Next Goal:</span>
-                                  <p className="text-emerald-200 mt-2 text-sm">{skill.details.nextGoal}</p>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    </div>
-
-                    <Card className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:border-blue-400/50 hover:shadow-xl hover:shadow-blue-400/10 h-full group-hover:scale-105">
+                    
+                    <Card className="bg-slate-800/40 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:border-blue-400/50 hover:shadow-xl hover:shadow-blue-400/10 h-full group-hover:scale-105 transform hover:-translate-y-1">
                       <CardContent className="p-6 text-center">
                         <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-xl flex items-center justify-center transition-transform duration-300 shadow-lg">
                           <skill.icon className="w-6 h-6 text-white" />
@@ -1122,13 +1034,26 @@ export default function Portfolio() {
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Live Demo
                       </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent"
-                      >
-                        <Github className="w-4 h-4" />
-                      </Button>
+                      {project.repoUrl ? (
+                        <a href={project.repoUrl} target="_blank" rel="noreferrer" className="inline-block w-full">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent w-full"
+                          >
+                            <Github className="w-4 h-4" />
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent w-full"
+                          disabled
+                        >
+                          <Github className="w-4 h-4" />
+                        </Button>
+                      )}
                     </div>
 
                     <div className="mt-3 text-xs text-slate-400 text-center">Click for detailed information</div>
@@ -1162,48 +1087,15 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="cursor-pointer group relative"
+                onClick={() => setSelectedModal({ type: 'softSkill', data: skill, layoutId: `soft-${skill.name}-${index}` })}
               >
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[200] flex items-center justify-center p-4">
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-slate-900/95 backdrop-blur-md border border-slate-600/50 rounded-2xl p-8 max-w-md w-full shadow-2xl shadow-black/50"
-                  >
-                    <div className="text-center">
-                      <div className="text-6xl mb-6">{skill.icon}</div>
-                      <h4 className="text-2xl font-bold text-white mb-4">{skill.name}</h4>
-                      <p className="text-slate-300 text-base leading-relaxed mb-6">{skill.description}</p>
-                      {skill.details && (
-                        <div className="text-left text-sm text-slate-300 space-y-3">
-                          <div className="bg-slate-800/50 rounded-lg p-4">
-                            <span className="text-blue-300 font-semibold">Examples:</span>
-                            <ul className="list-disc list-inside mt-2 text-slate-200 space-y-1">
-                              {skill.details.examples?.map((example, i) => (
-                                <li key={i} className="text-sm">
-                                  {example}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          {skill.details.impact && (
-                            <div className="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-4">
-                              <span className="text-emerald-300 font-semibold">Impact:</span>
-                              <p className="text-emerald-200 mt-2 text-sm">{skill.details.impact}</p>
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                </div>
 
-                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:border-blue-400/50 h-full group-hover:scale-105">
+                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:border-blue-400/50 h-full group-hover:scale-105 transform hover:-translate-y-1">
                   <CardContent className="p-6 text-center">
                     <div className="text-4xl mb-4">{skill.icon}</div>
                     <h3 className="text-lg font-semibold text-slate-200 mb-3">{skill.name}</h3>
                     <p className="text-slate-300 text-sm leading-relaxed">{skill.description}</p>
-                    <div className="mt-2 text-xs text-slate-400">Hover for details</div>
+                    <div className="mt-2 text-xs text-slate-400">Click for details</div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -1258,9 +1150,9 @@ export default function Portfolio() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
               Certifications
             </h2>
           </motion.div>
@@ -1293,6 +1185,11 @@ export default function Portfolio() {
               </motion.div>
             ))}
           </div>
+
+          <div className="mt-8 text-center">
+            <Button onClick={() => setShowCertGallery(true)} variant="outline">View more certificates</Button>
+          </div>
+
         </div>
       </section>
 
@@ -1308,8 +1205,90 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-slate-800/30 relative">
+      {/* Showcase Accordion Section */}
+  <LandingAccordionItem />
+
+  {/* Freelancing Section */}
+  <section id="freelance" className="py-20 bg-slate-800/30">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+          Freelancing Services
+        </h2>
+        <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+          I provide professional website building services — available part-time or for KozkerTech. I build responsive,
+          accessible, and performant websites using modern stacks (React, Next.js, Tailwind, Spring Boot for backends).
+          Interested clients can inquire via mobile or email below.
+        </p>
+      </motion.div>
+
+      <div className="max-w-4xl mx-auto">
+        <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+          <CardContent className="p-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-slate-200 mb-2">Website Building (Part-time / KozkerTech)</h3>
+                <p className="text-slate-300 mb-4 leading-relaxed">Services include: Responsive website development, CMS integration, performance optimization, SEO basics, and deployment.</p>
+                <div className="flex flex-wrap gap-2">
+                  {['Responsive Design', 'Static & Dynamic Sites', 'CMS Integration', 'Performance Optimization', 'Deployment'].map((s) => (
+                    <Badge key={s} className="bg-slate-700 text-slate-200 hover:bg-slate-600">{s}</Badge>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-full md:w-80">
+                <div className="bg-slate-800/40 rounded-lg p-4">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-3">
+                      <Mail className="w-6 h-6 text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="text-slate-300 font-medium">Email</p>
+                      <a href="mailto:akshayjayeshjp@gmail.com" className="text-slate-400 hover:text-blue-400">akshayjayeshjp@gmail.com</a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mr-3">
+                      <Phone className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-slate-300 font-medium">Mobile</p>
+                      <a href="tel:+918078309818" className="text-slate-400 hover:text-emerald-400">+91 8078309818</a>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex flex-col space-y-3">
+                    <Button size="sm" className="w-full bg-blue-500 hover:bg-blue-600 text-white" onClick={(e) => scrollToSection(undefined,'contact')}>
+                      Enquire / Send Message
+                    </Button>
+                    <a href="mailto:akshayjayeshjp@gmail.com" className="w-full inline-block">
+                      <Button size="sm" variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent">
+                        <Mail className="w-4 h-4 mr-2" /> Email Me
+                      </Button>
+                    </a>
+                    <a href="tel:+918078309818" className="w-full inline-block">
+                      <Button size="sm" variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent">
+                        <Phone className="w-4 h-4 mr-2" /> Call Me
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  {/* Contact Section */}
+  <section id="contact" className="py-20 bg-slate-800/30 relative">
         <div className="absolute inset-0 bg-[url('/contact-background.jpg')] bg-cover bg-center opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -1484,10 +1463,11 @@ export default function Portfolio() {
       <Dialog open={!!selectedModal} onOpenChange={() => setSelectedModal(null)}>
         <DialogContent className="bg-slate-800 border-slate-700 text-slate-100 max-w-2xl max-h-[80vh] overflow-y-auto">
           <motion.div
+            layoutId={selectedModal?.type === 'skill' ? selectedModal.layoutId : undefined}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30, duration: 0.4 }}
           >
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent flex items-center">
@@ -1638,6 +1618,21 @@ export default function Portfolio() {
 
               {selectedModal?.type === "certification" && selectedModal.data.details && (
                 <div className="space-y-4">
+                  {/* Certificate preview */}
+                  {selectedModal.data.imageUrl && (
+                    <div className="bg-slate-700/20 rounded-lg p-4 flex flex-col md:flex-row items-center gap-4">
+                      <img src={selectedModal.data.imageUrl} alt={`${selectedModal.data.name} certificate`} className="w-full md:w-1/2 rounded-md shadow-md object-contain" />
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-emerald-400 mb-2">{selectedModal.data.name}</h4>
+                        <p className="text-slate-300 mb-4">Issued by: {selectedModal.data.issuer}</p>
+                        <div className="flex gap-3">
+                          <a href={selectedModal.data.imageUrl} target="_blank" rel="noreferrer" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md">View Certificate</a>
+                          <button onClick={() => window.print()} className="inline-block bg-slate-700 text-white px-4 py-2 rounded-md">Print</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {selectedModal.data.details.duration && (
                     <div className="bg-slate-700/30 rounded-lg p-4">
                       <h4 className="font-semibold text-blue-400 mb-2">Duration</h4>
@@ -1662,6 +1657,33 @@ export default function Portfolio() {
           </motion.div>
         </DialogContent>
       </Dialog>
+
+    {showCertGallery && (
+      <AnimatePresence>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black/60" onClick={() => setShowCertGallery(false)} />
+          <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="relative w-full max-w-4xl p-6">
+            <Card className="bg-slate-800/95 border-slate-700">
+              <CardContent>
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-2xl font-bold text-slate-200">All Certificates</h3>
+                  <Button variant="ghost" size="sm" onClick={() => setShowCertGallery(false)}><X className="w-4 h-4" /></Button>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {certifications.map((c) => (
+                    <button key={c.name} onClick={() => { setSelectedModal({ type: 'certification', data: c }); setShowCertGallery(false); }} className="bg-slate-700/20 p-2 rounded-md text-left">
+                      <img src={c.imageUrl} alt={c.name} className="w-full h-36 object-contain rounded-md" />
+                      <div className="text-slate-300 text-sm mt-2">{c.name}</div>
+                    </button>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
+    )}
+
     </div>
   )
 }
